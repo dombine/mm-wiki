@@ -96,6 +96,9 @@
 
     Toc.prototype._showToc = function() {
 
+        if(!this.tocContent)
+            return;
+
         this.toc = document.createElement('div');
         this.toc.innerHTML = this.tocContent;
         this.toc.setAttribute('class',this.tocClass);

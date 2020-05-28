@@ -3,8 +3,8 @@
 var Email = {
 
     // test send
-    testSend : function (element, url) {
-        layer.prompt({title: '请输入收件人邮箱地址，多个以 ; 隔开', formType: 2}, function(text, index) {
+    testSend: function (element, url) {
+        layer.prompt({title: '请输入收件人邮箱地址，多个以 ; 隔开', formType: 2}, function (text, index) {
             layer.close(index);
             // $(element).attr('action', url);
             $(element).find("input[name='emails']").val(text);
@@ -12,7 +12,7 @@ var Email = {
         });
     },
 
-    ajaxSubmit: function(element, url) {
+    ajaxSubmit: function (element, url) {
 
         /**
          * 成功信息条
@@ -44,7 +44,7 @@ var Email = {
             if (result.code == 1) {
                 successBox(result.message, result.data);
             }
-            $("body,html").animate({scrollTop:0},300);
+            $("body,html").animate({scrollTop: 0}, 300);
         }
 
         var options = {

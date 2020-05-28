@@ -41,7 +41,7 @@ var Page = {
             if (result.code == 1) {
                 // remove storage
                 var documentId = $("input[name='document_id']").val();
-                var storageId = "mm_wiki_doc_"+documentId;
+                var storageId = "mm_wiki_doc_" + documentId;
                 Storage.remove(storageId);
                 successBox(result.message, result.data);
             }
@@ -71,8 +71,8 @@ var Page = {
             type: 1,
             area: ['380px', '232px'],
             content: containerHtml,
-            btn: ['确定','取消'],
-            yes: function(index, layero){
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
                 var commentText = $("textarea[name='edit_comment']").val().trim();
                 var isNoticeUser = "0";
                 var isFollowDoc = "0";
@@ -89,9 +89,9 @@ var Page = {
                     }
                 }
                 if (commentText && commentText.length > 0) {
-                    if (commentText.length > 50 ) {
+                    if (commentText.length > 50) {
                         layer.tips("最多50个字符！", $("textarea[name='edit_comment']"))
-                    }else {
+                    } else {
                         layer.close(index);
                         var options = {
                             dataType: 'json',
@@ -100,11 +100,11 @@ var Page = {
                         };
                         $(element).ajaxSubmit(options);
                     }
-                }else {
+                } else {
                     $("textarea[name='edit_comment']").focus();
                 }
             },
-            btn2: function(index, layero){
+            btn2: function (index, layero) {
                 layer.close(index);
             }
         });
@@ -136,18 +136,18 @@ var Page = {
      * cancel save
      */
     cancelSave: function (title, url) {
-        title = '<i class="fa fa-volume-up"></i> '+title;
+        title = '<i class="fa fa-volume-up"></i> ' + title;
         layer.confirm(title, {
-            btn: ['是','否'],
+            btn: ['是', '否'],
             skin: Layers.skin,
             btnAlign: 'c',
             title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
-        }, function() {
+        }, function () {
             var documentId = $("input[name='document_id']").val();
-            var storageId = "mm_wiki_doc_"+documentId;
+            var storageId = "mm_wiki_doc_" + documentId;
             Storage.remove(storageId);
             parent.location = url
-        }, function() {
+        }, function () {
 
         });
     },
@@ -161,12 +161,12 @@ var Page = {
             skin: Layers.skin,
             title: '<strong>附件</strong>',
             shadeClose: true,
-            shade : 0.1,
+            shade: 0,
             resize: false,
             maxmin: false,
             area: ["900px", "500px"],
-            content: "/attachment/page?document_id="+documentId,
-            padding:"10px"
+            content: "/attachment/page?document_id=" + documentId,
+            padding: "10px"
         });
     },
 

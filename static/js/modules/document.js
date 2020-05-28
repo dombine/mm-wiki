@@ -181,7 +181,7 @@ var Document = {
             if (!targetNode.isParent) {
                 return false;
             }
-            
+
             var title = '<i class="fa fa-volume-up"></i> 确定要移动文档吗？';
             layer.confirm(title, {
                 btn: ['是', '否'],

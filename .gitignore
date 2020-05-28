@@ -1,4 +1,4 @@
-logs/*.log
+logs/**
 .DS_Store
 !.gitignore
 .gitignore___jb_tmp___

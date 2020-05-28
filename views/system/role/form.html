@@ -1,6 +1,9 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
     <div class="panel panel-default">
+        {{if not .role}}
+            <div class="panel-heading layui-layer-title">添加角色</div>
+        {{end}}
         <div class="panel-body">
             <br>{{$role := .role}}
             <form class="form-horizontal" method="post" action="{{if $role}} /system/role/modify {{else}} /system/role/save {{end}}" onsubmit="return false">

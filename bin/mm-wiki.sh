@@ -20,6 +20,7 @@ mm-start() {
 
 mm-stop() {
     cat $pidfile | xargs kill -9
+	rm -rf $pidfile
 }
 
 if [[ -z "$1" ]];then

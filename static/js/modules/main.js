@@ -4,10 +4,10 @@
  */
 
 var Main = {
-    
-    Search:function (searchField) {
 
-        $(searchField).bind('input propertychange', function() {
+    Search: function (searchField) {
+
+        $(searchField).bind('input propertychange', function () {
             var _keywords = $(this).val();
             searchLazy(_keywords);
         });
@@ -23,23 +23,23 @@ var Main = {
                 var docName = $(this).text();
                 if (_keywords) {
                     if (docName.indexOf(_keywords) !== -1) {
-                        var newKeywords = _keywords.replace(rexMeta,function(matchStr){
+                        var newKeywords = _keywords.replace(rexMeta, function (matchStr) {
                             return '\\' + matchStr;
                         });
                         var rexGlobal = new RegExp(newKeywords, 'gi');
-                        var newDocName = docName.replace(rexGlobal, function(originalText){
+                        var newDocName = docName.replace(rexGlobal, function (originalText) {
                             var highLightText =
                                 '<span class="collect_search_text" style="color: whitesmoke;background-color: darkred;">'
                                 + originalText
-                                +'</span>';
-                            return 	highLightText;
+                                + '</span>';
+                            return highLightText;
                         });
                         $(this).html(newDocName);
                         $(this).parents('li').show()
-                    }else {
+                    } else {
                         $(this).parents('li').hide()
                     }
-                }else {
+                } else {
                     $(this).html(docName);
                     $(this).parents('li').show()
                 }
@@ -51,7 +51,7 @@ var Main = {
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
-            timeoutId = setTimeout(function() {
+            timeoutId = setTimeout(function () {
                 textFilter(_keywords);
                 $(searchField).focus();
             }, 500);

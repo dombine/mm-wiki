@@ -64,7 +64,7 @@
             <div class="panel-body md-view-box" >
                 <div class="dir-preview-box">
                     <div class="dir-preview-btn">
-                        展开目录
+                        隐藏目录
                     </div>
                     <div class="page-view-dir-toc" id="page-view-dir-toc">
 
@@ -120,14 +120,14 @@
             targetId: "page-view-dir-toc"
         });
 
-        // 按钮目录按钮永久显示, 滑动页面时, 固定显示
+        /*// 按钮目录按钮永久显示, 滑动页面时, 固定显示
         window.onscroll = function(){
             var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop;
             var dirPreviewBox = $(".dir-preview-box");
             if (scrollHeight >  120) {
                 dirPreviewBox.css({
                     position: "fixed",
-                    top: "20px"
+                    top: "0"
                 })
             } else {
                 dirPreviewBox.css({
@@ -135,7 +135,7 @@
                     top: "0"
                 })
             }
-        };
+        };*/
 
         // 目录显示与隐藏
         $(".dir-preview-btn").click(function () {
@@ -143,11 +143,6 @@
             if (this.innerText === "展开目录") {
                 this.innerText = "隐藏目录";
                 pageViewDirToc.show();
-                pageViewDirToc.css({
-                    position: "absolute",
-                    top: "25px",
-                    right: 0
-                })
             } else {
                 this.innerText = "展开目录";
                 pageViewDirToc.hide();
