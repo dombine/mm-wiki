@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default" style="border:0; box-shadow: 0 0 0 !important;">
+    <div class="panel panel-default no-border">
         <div class="panel-body">
             <div class="row">{{$spaceId := .space_id}}{{$otherUsers := .otherUsers}}
                 <form action="/space/addMember" method="post">
@@ -21,24 +21,29 @@
                                     multiple data-live-search="true"
                                     data-max-options="1"
                                     title="选择要添加的成员">
-                            {{range $otherUser := $otherUsers}}
-                                <option title="{{$otherUser.username}}({{$otherUser.given_name}})" value="{{$otherUser.user_id}}">{{$otherUser.username}}({{$otherUser.given_name}})</option>
-                            {{end}}
+                                {{range $otherUser := $otherUsers}}
+                                    <option title="{{$otherUser.username}}({{$otherUser.given_name}})"
+                                            value="{{$otherUser.user_id}}">{{$otherUser.username}}
+                                        ({{$otherUser.given_name}})
+                                    </option>
+                                {{end}}
                             </select>
                             <input type="hidden" name="space_id" value="{{$spaceId}}">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" onclick="Form.ajaxSubmit(this.form, false);"><i class="glyphicon glyphicon-plus"></i> 添加 </button>
+                                <button type="button" class="btn btn-primary"
+                                        onclick="Form.ajaxSubmit(this.form, false);"><i
+                                            class="glyphicon glyphicon-plus"></i> 添加 </button>
                             </span>
                         </div>
                     </div>
                 </form>
             </div>
-            </div>
-            <hr style="margin-top:0;">
-        <div class="panel-footer" style="padding-bottom:0;">
+        </div>
+        <hr style="margin:0;">
+        <div class="panel-footer panel-footer-top">
             {{template "paginator/default.html" .}}
         </div>
-            <div class="panel-body" style="padding-top:5px;">
+        <div class="panel-body panel-body-bottom">
             <table class="table">
                 <thead>
                 <tr>
@@ -52,22 +57,27 @@
                 </thead>
                 <tbody>
                 {{range $user := .users}}
-                <tr>
-                    <td>{{$user.username}}</td>
-                    <td>{{$user.given_name}}</td>
-                    <td>{{$user.email}}</td>
-                    <td>{{$user.mobile}}</td>
-                    <td class="center" style="padding: 4px 6px">
-                        <select name="edit_privilege" class="form-control input-xs" data-link="/space/modifyMember?space_user_id={{$user.space_user_id}}&user_id={{$user.user_id}}&space_id={{$spaceId}}">
-                            <option value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}>浏览者</option>
-                            <option value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}>编辑者</option>
-                            <option value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}>管理员</option>
-                        </select>
-                    </td>
-                    <td class="center">
-                        <a onclick="Layers.confirm('确定要移除该成员吗？', '/space/removeMember?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i class="glyphicon glyphicon-remove-circle"></i>移除</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>{{$user.username}}</td>
+                        <td>{{$user.given_name}}</td>
+                        <td>{{$user.email}}</td>
+                        <td>{{$user.mobile}}</td>
+                        <td class="center" style="padding: 4px 6px">
+                            <select name="edit_privilege" class="form-control input-xs"
+                                    data-link="/space/modifyMember?space_user_id={{$user.space_user_id}}&user_id={{$user.user_id}}&space_id={{$spaceId}}">
+                                <option value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}>浏览者
+                                </option>
+                                <option value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}>编辑者
+                                </option>
+                                <option value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}>管理员
+                                </option>
+                            </select>
+                        </td>
+                        <td class="center">
+                            <a onclick="Layers.confirm('确定要移除该成员吗？', '/space/removeMember?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i
+                                        class="glyphicon glyphicon-remove-circle"></i>移除</a>
+                        </td>
+                    </tr>
                 {{end}}
                 </tbody>
             </table>
@@ -77,13 +87,13 @@
 </div>
 <script type="text/javascript">
     $(function () {
-       $("select[name='edit_privilege']").each(function () {
-           $(this).bind('change', function () {
-               var url = $(this).attr("data-link");
-               var privilege = this.value;
-               url += "&privilege="+privilege;
-               Common.ajaxSubmit(url)
-           })
-       });
+        $("select[name='edit_privilege']").each(function () {
+            $(this).bind('change', function () {
+                var url = $(this).attr("data-link");
+                var privilege = this.value;
+                url += "&privilege=" + privilege;
+                Common.ajaxSubmit(url)
+            })
+        });
     });
 </script>

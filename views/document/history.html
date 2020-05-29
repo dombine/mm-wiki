@@ -1,10 +1,12 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="panel panel-default no-border">
+        <div class="panel-footer panel-footer-top">
+            {{template "paginator/default.html" .}}
+        </div>
+        <div class="panel-body panel-body-bottom">
             <div class="row">
             </div>
-            <br>
             <table class="table">
                 <thead>
                 <tr>
@@ -20,7 +22,7 @@
                     <td>{{$logDocument.username}}</td>
                     <td>
                     {{if eq $logDocument.action "1"}}
-                        <label class="text text-info">创建</label>
+                        <label class="text text-success">创建</label>
                     {{else if eq $logDocument.action "2"}}
                         <label class="text text-primary">修改</label>
                     {{else if eq $logDocument.action "3"}}
@@ -35,9 +37,6 @@
                 {{end}}
                 </tbody>
             </table>
-        </div>
-        <div class="panel-footer">
-            {{template "paginator/default.html" .}}
         </div>
     </div>
 </div>

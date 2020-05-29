@@ -1,8 +1,10 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default">
-        <br>{{$space := .space}}
-        <div class="panel-body">
+    <div class="panel panel-default {{if .space}} no-border {{end}}">
+        {{if not .space}}
+            <div class="panel-heading layui-layer-title">添加空间</div>
+        {{end}}
+        <div class="panel-body">{{$space := .space}}
             <form class="form-horizontal" method="post" action="{{if $space}} /system/space/modify {{else}}/system/space/save {{end}}">
                 <input type="hidden" name="space_id" value="{{$space.space_id}}">
                 <div class="form-group">

@@ -1,7 +1,7 @@
 {{if gt .paginator.Nums 0 }}
-<ul class="pagination pagination-sm">
-    <li><span>共 {{.paginator.Nums}} 条数据 </span></li>
-    <li class="pagination-select">
+    <ul class="pagination pagination-sm">
+        <li><span>共 {{.paginator.Nums}} 条数据 </span></li>
+        <li class="pagination-select">
         <span>
         <select class="pagination-select-xs" onchange="window.location=this.value">
             {{range $index, $numSelect := .paginator.PerPageNumsSelect}}
@@ -9,25 +9,56 @@
             {{end}}
         </select>
     </span>
-    </li>
-    {{if .paginator.HasPrev}}
-    <li><a href="{{.paginator.PageLinkFirst}}">首页</a></li>
-    <li><a href="{{.paginator.PageLinkPrev}}"><span><i class="glyphicon glyphicon-backward"></i></span></a></li>
-    {{else}}
-    <li class="disabled"><a>首页</a></li>
-    <li class="disabled"><a><span><i class="glyphicon glyphicon-backward"></i></span></a></li>
-    {{end}}
-    {{range $index, $page := .paginator.Pages}}
-    <li{{if $.paginator.IsActive .}} class="active"{{end}}>
-        <a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
-    </li>
-    {{end}}
-    {{if .paginator.HasNext}}
-    <li><a href="{{.paginator.PageLinkNext}}"><span><i class="glyphicon glyphicon-forward"></i></span></a></li>
-    <li><a href="{{.paginator.PageLinkLast}}">尾页</a></li>
-    {{else}}
-    <li class="disabled"><a><span><i class="glyphicon glyphicon-forward"></i></span></a></li>
-    <li class="disabled"><a>尾页</a></li>
-    {{end}}
-</ul>
+        </li>
+        {{if .paginator.HasPrev}}
+            <li><a href="{{.paginator.PageLinkFirst}}">首页</a></li>
+            <li><a href="{{.paginator.PageLinkPrev}}"><span><i class="glyphicon glyphicon-backward"></i></span></a></li>
+        {{else}}
+            <li class="disabled"><a>首页</a></li>
+            <li class="disabled"><a><span><i class="glyphicon glyphicon-backward"></i></span></a></li>
+        {{end}}
+        {{/*自定义页码显示, 避免页数过多导致显示问题*/}}
+        {{if ne .paginator.CurrentPage 1}}
+            <li><a href="{{$.paginator.PageLink 1}}">1</a></li>
+        {{end}}
+        {{if gt .paginator.CurrentPage 4}}
+            <li><a href="">...</a></li>
+        {{end}}
+        {{if gt .paginator.CurrentPage 3}}
+            <li><a href="{{$.paginator.PageLink .paginator.CurrentPageMinusTwo}}">{{.paginator.CurrentPageMinusTwo}}</a></li>
+        {{end}}
+        {{if gt .paginator.CurrentPage 2}}
+            <li><a href="{{$.paginator.PageLink .paginator.CurrentPageMinusOne}}">{{.paginator.CurrentPageMinusOne}}</a></li>
+        {{end}}
+
+        <li class="active">
+            <a href="{{$.paginator.PageLink .paginator.CurrentPage}}">{{.paginator.CurrentPage}}</a>
+        </li>
+
+        {{if gt .paginator.PageNums .paginator.CurrentPagePlusOne}}
+            <li><a href="{{$.paginator.PageLink .paginator.CurrentPagePlusOne}}">{{.paginator.CurrentPagePlusOne}}</a></li>
+        {{end}}
+        {{if gt .paginator.PageNums .paginator.CurrentPagePlusTwo}}
+            <li><a href="{{$.paginator.PageLink .paginator.CurrentPagePlusTwo}}">{{.paginator.CurrentPagePlusTwo}}</a></li>
+        {{end}}
+        {{if gt .paginator.PageNums .paginator.CurrentPagePlusThree}}
+            <li><a href="">...</a></li>
+        {{end}}
+        {{if ne .paginator.PageNums .paginator.CurrentPage}}
+            <li><a href="{{$.paginator.PageLink .paginator.PageNums}}">{{.paginator.PageNums}}</a></li>
+        {{end}}
+
+        {{/*{{range $index, $page := .paginator.Pages}}
+            <li{{if $.paginator.IsActive .}} class="active"{{end}}>
+                <a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
+            </li>
+        {{end}}*/}}
+        {{if .paginator.HasNext}}
+            <li><a href="{{.paginator.PageLinkNext}}"><span><i class="glyphicon glyphicon-forward"></i></span></a></li>
+            <li><a href="{{.paginator.PageLinkLast}}">尾页</a></li>
+        {{else}}
+            <li class="disabled"><a><span><i class="glyphicon glyphicon-forward"></i></span></a></li>
+            <li class="disabled"><a>尾页</a></li>
+        {{end}}
+    </ul>
 {{end}}

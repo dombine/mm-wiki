@@ -1,16 +1,10 @@
 <div class="container-fluid">
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <form action="" method="get">
-                <div class="col-md-6">
-                    <div class="input-group">
-                    </div>
-                </div>{{$roleId := .roleId}}
-            </form>
-        </div>
+<div class="panel panel-default no-border">
+    <div class="panel-footer panel-footer-top">{{$roleId := .roleId}}
+        {{template "paginator/default.html" .}}
     </div>
-    <div class="table-responsive">
+    <div class="panel-body panel-body-bottom">
+        <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -54,8 +48,6 @@
             </tbody>
         </table>
     </div>
-    <div class="panel-footer">
-        {{template "paginator/default.html" .}}
     </div>
 </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="container-fluid" style="height: 100%">
     <form id="page_form" action="/page/modify" method="post" style="height: 98%" onsubmit="return false">
-    <div class="row">{{$pageContent := .page_content}}{{$document := .document}}
+    <div class="row" style="margin-top: 10px;">{{$pageContent := .page_content}}{{$document := .document}}
         <div class="col-md-12">
             <input type="hidden" name="document_id" value="{{$document.document_id}}">
             <div class="row">
                 <div class="col-md-10">
                     <input type="text" name="name" class="form-control" placeholder="请输入文档名称" value="{{$document.name}}" {{if eq $document.parent_id "0"}} readonly="readonly" {{end}}>
                 </div>
-                <div class="col-md-2 text-center" >
+                <div class="col-md-2 text-right" >
                     <button type="button" class="btn btn-primary" onclick="Page.ajaxSave(this.form, {{.sendEmail}}, {{.autoFollowDoc}})"><i class="fa fa-save"></i> 保存</button>
                     <button type="button" class="btn btn-default" onclick="Page.cancelSave('确定要放弃此次修改吗?', '/document/index?document_id={{$document.document_id}}')"><i class="fa fa-mail-reply"></i> 取消</button>
                 </div>

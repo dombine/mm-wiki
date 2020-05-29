@@ -9,9 +9,15 @@
             </div>
         </div>
     {{end}}
-    <div class="panel panel-default">
-        <br>{{$privilege := .privilege}}{{$menus := .menus}}
-        <div class="panel-body">
+    <div class="panel panel-default {{if .privilege}} no-border {{end}}">
+        {{if eq .mode "dev"}}
+            {{if not .privilege}}
+                <div class="panel-heading layui-layer-title">添加权限</div>
+            {{end}}
+        {{else}}
+            <br>
+        {{end}}
+        <div class="panel-body">{{$privilege := .privilege}}{{$menus := .menus}}
             <form class="form-horizontal" method="post" action="{{if $privilege}} /system/privilege/modify {{else}}/system/privilege/save {{end}}" onsubmit="return false">
                 <input type="hidden" name="privilege_id" value="{{$privilege.privilege_id}}">
                 <div class="form-group">

@@ -22,7 +22,7 @@ import (
 )
 
 // 默认的每页条数的选择范围
-var defaultPerPageNumsSelect = []int{10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100}
+var defaultPerPageNumsSelect = []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
 
 type Paginator struct {
 	Request             *http.Request
@@ -193,6 +193,31 @@ func (p *Paginator) Offset() int {
 
 func (p *Paginator) HasPages() bool {
 	return p.PageNums() > 1
+}
+
+//添加分页需要的参数
+func (p *Paginator) CurrentPage() int {
+	return p.Page()
+}
+
+func (p *Paginator) CurrentPagePlusOne() int {
+	return p.Page() + 1
+}
+
+func (p *Paginator) CurrentPagePlusTwo() int {
+	return p.Page() + 2
+}
+
+func (p *Paginator) CurrentPagePlusThree() int {
+	return p.Page() + 3
+}
+
+func (p *Paginator) CurrentPageMinusOne() int {
+	return p.Page() - 1
+}
+
+func (p *Paginator) CurrentPageMinusTwo() int {
+	return p.Page() - 2
 }
 
 func NewPaginator(req *http.Request, per int, nums interface{}) *Paginator {

@@ -57,7 +57,7 @@
                 <div class="panel-body">
                     <div class="row">
                         {{range $link := .links}}
-                        <div class="fast-link">
+                        <div class="col-md-6 fast-link">
                             <label> <a href="{{$link.url}}" target="_blank"><i class="fa fa-angle-double-right fa-lg"></i> {{$link.name}} <i class="fa fa-external-link"></i></a></label>
                         </div>
                         {{end}}

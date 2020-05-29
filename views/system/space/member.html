@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default">
+    <div class="panel panel-default no-border">
         <div class="panel-body">
             <div class="row">{{$spaceId := .space_id}}{{$otherUsers := .otherUsers}}
                 <form action="/system/space_user/save" method="post">
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 空间权限</span>
+                            <span class="input-group-addon"> 添加空间权限</span>
                             <select name="privilege" class="form-control selectpicker show-menu-arrow"
                                     data-max-options="1">
                                 <option value="0">浏览者</option>
@@ -34,42 +34,45 @@
                 </form>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th class="w8p">ID</th>
-                    <th class="w15p">用户名</th>
-                    <th>姓名</th>
-                    <th class="w20p">邮箱</th>
-                    <th class="w15p">空间权限</th>
-                    <th class="w13p">操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{range $user := .users}}
-                <tr>
-                    <td class="center">{{$user.user_id}}</td>
-                    <td>{{$user.username}}</td>
-                    <td>{{$user.given_name}}</td>
-                    <td>{{$user.email}}</td>
-                    <td class="center" style="padding: 4px 6px">
-                        <select name="edit_privilege" class="form-control input-xs" data-link="/system/space_user/modify?space_user_id={{$user.space_user_id}}&user_id={{$user.user_id}}&space_id={{$spaceId}}">
-                            <option title="浏览者" value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}>浏览者</option>
-                            <option title="访问者" value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}>编辑者</option>
-                            <option title="管理员" value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}>管理员</option>
-                        </select>
-                    </td>
-                    <td class="center">
-                        <a onclick="Layers.confirm('确定要移除该成员吗？', '/system/space_user/remove?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i class="glyphicon glyphicon-remove-circle"></i>移除</a>
-                    </td>
-                </tr>
-                {{end}}
-                </tbody>
-            </table>
-        </div>
-        <div class="panel-footer">
+        <hr style="margin:0;">
+        <div class="panel-footer panel-footer-top">
             {{template "paginator/default.html" .}}
+        </div>
+        <div class="panel-body panel-body-bottom">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="w8p">ID</th>
+                        <th class="w15p">用户名</th>
+                        <th>姓名</th>
+                        <th class="w20p">邮箱</th>
+                        <th class="w15p">空间权限</th>
+                        <th class="w13p">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{range $user := .users}}
+                    <tr>
+                        <td class="center">{{$user.user_id}}</td>
+                        <td>{{$user.username}}</td>
+                        <td>{{$user.given_name}}</td>
+                        <td>{{$user.email}}</td>
+                        <td class="center" style="padding: 4px 6px">
+                            <select name="edit_privilege" class="form-control input-xs" data-link="/system/space_user/modify?space_user_id={{$user.space_user_id}}&user_id={{$user.user_id}}&space_id={{$spaceId}}">
+                                <option title="浏览者" value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}>浏览者</option>
+                                <option title="访问者" value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}>编辑者</option>
+                                <option title="管理员" value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}>管理员</option>
+                            </select>
+                        </td>
+                        <td class="center">
+                            <a onclick="Layers.confirm('确定要移除该成员吗？', '/system/space_user/remove?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i class="glyphicon glyphicon-remove-circle"></i>移除</a>
+                        </td>
+                    </tr>
+                    {{end}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

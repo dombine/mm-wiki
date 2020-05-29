@@ -125,7 +125,7 @@ func (l *Link) GetLinksByKeywordAndLimit(keyword string, userId string, limit in
 	var rs *mysql.ResultSet
 	rs, err = db.Query(db.AR().From(Table_Link_Name).Where(map[string]interface{}{
 		"name LIKE": "%" + keyword + "%",
-		"userId":    userId,
+		"user_id":   userId,
 	}).Limit(limit, number).OrderBy("link_id", "DESC"))
 	if err != nil {
 		return

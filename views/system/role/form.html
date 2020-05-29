@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default">
+    <div class="panel panel-default {{if .role}} no-border {{end}}">
         {{if not .role}}
             <div class="panel-heading layui-layer-title">添加角色</div>
         {{end}}

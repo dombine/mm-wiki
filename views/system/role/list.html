@@ -1,12 +1,8 @@
 <div class="container-fluid">
-<div class="panel panel-default">
+<div class="panel panel-default no-border sys-panel">
     <div class="panel-body">
-        <div class="row">
+        <div class="row top-row">
             <form action="" method="get">
-                <div class="col-md-9">
-                    <div class="input-group">
-                    </div>
-                </div>
                 <div class="col-md-3">
                     <div class="input-group">
                         <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="角色名称">
@@ -14,6 +10,10 @@
 				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 				            </span>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6 top-page">
+                    {{template "paginator/default.html" .}}
                 </div>
             </form>
         </div>
@@ -60,9 +60,6 @@
             {{end}}
             </tbody>
         </table>
-    </div>
-    <div class="panel-footer">
-        {{template "paginator/default.html" .}}
     </div>
 </div>
 </div>

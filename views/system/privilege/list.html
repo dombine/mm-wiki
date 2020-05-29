@@ -1,10 +1,10 @@
 <div class="container-fluid">
-    <div class="panel panel-default" style="margin-bottom:80px;">
+    <div class="panel panel-default no-border">
         <div class="panel-body">
             <h4><span class="label label-default">系统权限</span></h4>
             <br>
             {{range $menu := $.menus}}
-                <ul class="list-group w240 inline-group">
+                <ul class="list-group">
                     <li class="list-group-item"><strong>{{$menu.name}}</strong>
                         {{if eq $.mode "dev"}}
                         <span class="pull-right"><a name='edit' data-link='/system/privilege/edit?privilege_id={{$menu.privilege_id}}'>改</a> | <a onclick="Layers.confirm('确定要删除权限吗？','/system/privilege/delete?privilege_id={{$menu.privilege_id}}')">删</a></span>

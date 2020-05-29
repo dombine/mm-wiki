@@ -64,7 +64,7 @@
             <div class="panel-body md-view-box" >
                 <div class="dir-preview-box">
                     <div class="dir-preview-btn">
-                        隐藏目录
+                        展开目录
                     </div>
                     <div class="page-view-dir-toc" id="page-view-dir-toc">
 
@@ -136,6 +136,16 @@
                 })
             }
         };*/
+
+        $.scrollUp({
+            animation: 'fade',
+            // activeOverlay: '#00FFFF',
+            scrollImg: {
+                active: true,
+                type: 'background',
+                src: 'img/top.png'
+            }
+        });
 
         // 目录显示与隐藏
         $(".dir-preview-btn").click(function () {
