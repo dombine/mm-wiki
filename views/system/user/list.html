@@ -33,7 +33,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="w8p">ID</th>
+                <th class="w8p global-primary-id">ID</th>
                 <th class="w15p">用户名</th>
                 <th>姓名</th>
                 <th class="w15p">邮箱</th>
@@ -46,7 +46,7 @@
             <tbody>
             {{range $user := .users}}
             <tr>
-                <td class="center">{{$user.user_id}}</td>
+                <td class="center global-primary-id">{{$user.user_id}}</td>
                 <td><a name="info" data-link="/system/user/info?user_id={{$user.user_id}}">{{$user.username}}</a></td>
                 <td><a name="info" data-link="/system/user/info?user_id={{$user.user_id}}">{{$user.given_name}}</a></td>
                 <td>{{$user.email}}</td>

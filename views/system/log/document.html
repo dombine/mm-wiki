@@ -39,7 +39,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="w8p">ID</th>
+                    <th class="w8p global-primary-id">ID</th>
                     <th class="w8p">用户</th>
                     <th class="w8p">动作</th>
                     <th>文档</th>
@@ -50,7 +50,7 @@
                 <tbody>
                 {{range $logDocument := .logDocuments}}
                 <tr>
-                    <td class="center">{{$logDocument.log_document_id}}</td>
+                    <td class="center global-primary-id">{{$logDocument.log_document_id}}</td>
                     <td class="center">{{$logDocument.username}}</td>
                     <td class="center">
                     {{if eq $logDocument.action "1"}}

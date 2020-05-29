@@ -20,6 +20,5 @@ RUN go build -o /opt/mm-wiki/mm-wiki ./ \
     && cp ./scripts/run.sh /opt/mm-wiki\
     && cp -r ./static/ /opt/mm-wiki\
     && cp -r ./views/ /opt/mm-wiki\
-    && cp -r ./logs/ /opt/mm-wiki\
     && cp -r ./docs/ /opt/mm-wiki
 CMD ["/opt/mm-wiki/mm-wiki", "--conf", "/opt/mm-wiki/conf/mm-wiki.conf"]

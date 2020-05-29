@@ -53,6 +53,7 @@ func (this *ContactController) Save() {
 		"mobile":   mobile,
 		"position": position,
 		"email":    email,
+		"user_id":  this.UserId,
 	}
 
 	contactId, err := models.ContactModel.Insert(contact)
@@ -68,7 +69,7 @@ func (this *ContactController) List() {
 
 	var err error
 	var contacts []map[string]string
-	contacts, err = models.ContactModel.GetAllContact()
+	contacts, err = models.ContactModel.GetAllContact(this.UserId)
 
 	if err != nil {
 		this.ErrorLog("获取联系人列表出错: " + err.Error())

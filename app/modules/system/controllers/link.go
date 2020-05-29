@@ -35,7 +35,7 @@ func (this *LinkController) Save() {
 	if valid.Validate(url, is.URL) != nil {
 		this.jsonError("链接地址格式不正确！")
 	}
-	ok, err := models.LinkModel.HasLinkName(name)
+	ok, err := models.LinkModel.HasLinkName(this.UserId, name)
 	if err != nil {
 		this.ErrorLog("添加链接失败：" + err.Error())
 		this.jsonError("添加链接失败！")
@@ -48,11 +48,12 @@ func (this *LinkController) Save() {
 		"name":     name,
 		"url":      url,
 		"sequence": sequence,
+		"user_id":  this.UserId,
 	})
 
 	if err != nil {
 		this.ErrorLog("添加链接失败：" + err.Error())
-		this.jsonError("添加链接失败")
+		this.jsonError("添加链接失败：" + err.Error())
 	}
 	this.InfoLog("添加链接 " + utils.Convert.IntToString(linkId, 10) + " 成功")
 	this.jsonSuccess("添加链接成功", nil, "/system/link/list")
@@ -69,11 +70,11 @@ func (this *LinkController) List() {
 	var count int64
 	var links []map[string]string
 	if keyword != "" {
-		count, err = models.LinkModel.CountLinksByKeyword(keyword)
-		links, err = models.LinkModel.GetLinksByKeywordAndLimit(keyword, limit, number)
+		count, err = models.LinkModel.CountLinksByKeyword(keyword, this.UserId)
+		links, err = models.LinkModel.GetLinksByKeywordAndLimit(keyword, this.UserId, limit, number)
 	} else {
-		count, err = models.LinkModel.CountLinks()
-		links, err = models.LinkModel.GetLinksByLimit(limit, number)
+		count, err = models.LinkModel.CountLinks(this.UserId)
+		links, err = models.LinkModel.GetLinksByLimit(this.UserId, limit, number)
 	}
 	if err != nil {
 		this.ErrorLog("获取链接列表失败: " + err.Error())

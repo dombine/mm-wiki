@@ -6,10 +6,10 @@
 
 
 -- --------------------------------------
--- 系统用户（root）, password：123456, 自动安装不需要插入，手动安装时需要插入该数据
+-- 系统用户（admin）, password：123456, 自动安装不需要插入，手动安装时需要插入该数据
 -- --------------------------------------
 -- INSERT INTO `mw_user` (`user_id`, `username`, `password`, `given_name`, `email`,  `mobile`, `role_id`, `is_delete`, `create_time`, `update_time`)
--- VALUES ('1', 'root', 'e10adc3949ba59abbe56e057f20f883e', 'root', 'root@123456.com', '1102222', '1', '0', unix_timestamp(now()), unix_timestamp(now()));
+-- VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'admin@123456.com', '1102222', '1', '0', unix_timestamp(now()), unix_timestamp(now()));
 
 
 -- --------------------------------------
@@ -100,7 +100,7 @@ INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, actio
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (75, '修改链接', 71, 'controller', 'link', 'edit', 'glyphicon-list', '', 0, 84, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (76, '修改链接保存', 71, 'controller', 'link', 'modify', 'glyphicon-list', '', 0, 85, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (77, '删除链接', 71, 'controller', 'link', 'delete', 'glyphicon-list', '', 0, 86, unix_timestamp(now()), unix_timestamp(now()));
-INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (78, '系统联系人', 71, 'controller', 'contact', 'list', 'glyphicon-list', '', 1, 91, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (78, '联系人', 71, 'controller', 'contact', 'list', 'glyphicon-list', '', 1, 91, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (79, '添加联系人', 71, 'controller', 'contact', 'add', 'glyphicon-list', '', 0, 92, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (80, '添加联系人保存', 71, 'controller', 'contact', 'save', 'glyphicon-list', '', 0, 93, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (81, '修改联系人', 71, 'controller', 'contact', 'edit', 'glyphicon-list', '', 0, 94, unix_timestamp(now()), unix_timestamp(now()));
@@ -151,6 +151,33 @@ INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_
 INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (28, 2, 46, unix_timestamp(now()));
 INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (29, 2, 47, unix_timestamp(now()));
 INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (30, 2, 48, unix_timestamp(now()));
+
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (31, 3, 71, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (32, 3, 72, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (33, 3, 73, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (34, 3, 74, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (35, 3, 75, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (36, 3, 76, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (37, 3, 77, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (38, 3, 78, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (39, 3, 79, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (40, 3, 80, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (41, 3, 81, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (42, 3, 82, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (43, 3, 83, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (44, 2, 71, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (45, 2, 72, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (46, 2, 73, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (47, 2, 74, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (48, 2, 75, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (49, 2, 76, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (50, 2, 77, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (51, 2, 78, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (52, 2, 79, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (53, 2, 80, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (54, 2, 81, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (55, 2, 82, unix_timestamp(now()));
+INSERT INTO mw_role_privilege (role_privilege_id, role_id, privilege_id, create_time) VALUES (56, 2, 83, unix_timestamp(now()));
 
 
 -- -------------------------------------------

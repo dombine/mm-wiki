@@ -235,6 +235,7 @@ CREATE TABLE `mw_link` (
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '链接名称',
   `url` varchar(100) NOT NULL DEFAULT '' COMMENT '链接地址',
   `sequence` int(10) NOT NULL DEFAULT '0' COMMENT '排序号(越小越靠前)',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`link_id`)
@@ -273,7 +274,7 @@ CREATE TABLE `mw_config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='全局配置表';
 
 -- --------------------------------
--- 系统联系人表
+-- 联系人表
 -- --------------------------------
 DROP TABLE IF EXISTS `mw_contact`;
 CREATE TABLE `mw_contact` (
@@ -281,6 +282,7 @@ CREATE TABLE `mw_contact` (
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '联系人名称',
   `mobile` char(13) NOT NULL DEFAULT '' COMMENT '联系电话',
   `email` varchar(50) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `position` varchar(100) NOT NULL DEFAULT '' COMMENT '联系人职位',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',

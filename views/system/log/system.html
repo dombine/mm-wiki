@@ -40,7 +40,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="w7p">ID</th>
+                    <th class="w7p global-primary-id">ID</th>
                     <th class="w10p">级别</th>
                     <th class="w9p">用户</th>
                     <th>描述</th>
@@ -52,7 +52,7 @@
                 <tbody>
                 {{range $log := .logs}}
                 <tr>
-                    <td class="center">{{$log.log_id}}</td>
+                    <td class="center global-primary-id">{{$log.log_id}}</td>
                     <td class="center">
                     {{if eq $log.level "3"}}<span class="label label-danger">ERROR</span>{{end}}
                     {{if eq $log.level "4"}}<span class="label label-warning">WARNING</span>{{end}}

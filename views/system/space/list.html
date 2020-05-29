@@ -22,7 +22,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="w8p">ID</th>
+                <th class="w8p global-primary-id">ID</th>
                 <th class="w15p">名称</th>
                 <th>描述</th>
                 <th class="w15p">标签</th>
@@ -35,7 +35,7 @@
             <tbody>
             {{range $space := .spaces}}
             <tr>
-                <td class="center">{{$space.space_id}}</td>
+                <td class="center global-primary-id">{{$space.space_id}}</td>
                 <td><a href="/space/document?space_id={{$space.space_id}}" target="_parent" title="查看空间文档"><strong>{{$space.name}}</strong> <span class="text text-primary"><i class="glyphicon glyphicon-new-window"></i></span></a></td>
                 <td>{{$space.description}}</td>
                 <td class="tags-show center">{{$space.tags}}</td>

@@ -24,7 +24,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="w5p">ID</th>
+                    <th class="w5p global-primary-id">ID</th>
                     <th class="w10p">姓名</th>
                     <th class="w11p">职位</th>
                     <th class="w9p">联系电话</th>
@@ -35,7 +35,7 @@
                 <tbody>
                 {{range $contact := .contacts}}
                 <tr>
-                    <td class="center">{{$contact.contact_id}}</td>
+                    <td class="center global-primary-id">{{$contact.contact_id}}</td>
                     <td>{{$contact.name}}</td>
                     <td class="center">{{$contact.position}}</td>
                     <td class="center">{{$contact.mobile}}</td>
@@ -53,6 +53,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    Layers.bindIframe("[name='add']", "添加系统联系人", "400px", "850px");
-    Layers.bindIframe("[name='edit']", "修改系统联系人", "400px", "850px");
+    Layers.bindIframe("[name='add']", "添加联系人", "400px", "850px");
+    Layers.bindIframe("[name='edit']", "修改联系人", "400px", "850px");
 </script>

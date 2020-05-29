@@ -47,8 +47,8 @@ th {
 }
 
 .container-fluid {
-    padding-right: 6px;
-    padding-left: 6px;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .sub-header {
@@ -77,6 +77,14 @@ th {
     word-break:break-all;
     word-wrap:break-word;
     margin-bottom: 0;
+}
+
+.table tr{
+    border-bottom: 1px solid #dedede;
+}
+
+.table thead{
+    background: #f8f8f8;
 }
 
 .label-xs {
@@ -421,7 +429,7 @@ ul.countdown li p {
  * mainFrame 滚动条
  */
 #frame-body {
-    padding-top: 6px;
+    padding-top: 0;
     overflow-y: auto!important;
 }
 #frame-body::-webkit-scrollbar-track {
@@ -574,5 +582,9 @@ mark {
 .page-view-dir-toc ul li a:hover {
     color: #fff;
     background-color: #337ab7;
+}
+
+.global-primary-id {
+    display: none;
 }
 

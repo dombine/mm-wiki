@@ -10,7 +10,7 @@
         <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><i class="fa fa-file-word-o"></i>  最近更新文档</strong></div>
-                <div class="panel-body" style="min-height: 680px">
+                <div class="panel-body" style="min-height: 706px">
                     <div class="document-update">
                         <ul>
                             {{range $logDocument := $logDocuments}}
@@ -45,19 +45,19 @@
                             {{end}}
                         </ul>
                     </div>
-                    <div class="text-right">
-                    {{template "paginator/default.html" .}}
-                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                {{template "paginator/default.html" .}}
                 </div>
             </div>
         </div>
         <div class="col-md-5">
-            <div class="panel panel-default" style="min-height: 400px">
+            <div class="panel panel-default" style="min-height: 436px">
                 <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> 快捷链接</strong></div>
                 <div class="panel-body">
                     <div class="row">
                         {{range $link := .links}}
-                        <div class="col-md-6 fast-link">
+                        <div class="fast-link">
                             <label> <a href="{{$link.url}}" target="_blank"><i class="fa fa-angle-double-right fa-lg"></i> {{$link.name}} <i class="fa fa-external-link"></i></a></label>
                         </div>
                         {{end}}
@@ -66,8 +66,8 @@
             </div>
         </div>
         <div class="col-md-5" >
-            <div class="panel panel-default" style="min-height: 305px">
-                <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> 系统联系人</strong></div>
+            <div class="panel panel-default" style="min-height: 345px">
+                <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> 联系人</strong></div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {{range $contact := .contacts}}

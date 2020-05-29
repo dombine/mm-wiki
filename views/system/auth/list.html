@@ -23,7 +23,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="w5p">ID</th>
+                    <th class="w5p global-primary-id">ID</th>
                     <th class="w13p">名称</th>
                     <th class="w8p">用户名前缀</th>
                     <th>认证URL</th>
@@ -35,7 +35,7 @@
                 <tbody>
                 {{range $auth := .auths}}
                 <tr>
-                    <td class="center">{{$auth.login_auth_id}}</td>
+                    <td class="center global-primary-id">{{$auth.login_auth_id}}</td>
                     <td>{{$auth.name}}</td>
                     <td>{{$auth.username_prefix}}</td>
                     <td>{{$auth.url}}</td>

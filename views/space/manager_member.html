@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div id="failedBox" class="hide"></div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="border:0; box-shadow: 0 0 0 !important;">
         <div class="panel-body">
             <div class="row">{{$spaceId := .space_id}}{{$otherUsers := .otherUsers}}
                 <form action="/space/addMember" method="post">
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 空间权限</span>
+                            <span class="input-group-addon"> 添加空间权限</span>
                             <select name="privilege" class="form-control selectpicker show-menu-arrow"
                                     data-max-options="1">
                                 <option value="0">浏览者</option>
@@ -33,7 +33,12 @@
                     </div>
                 </form>
             </div>
-            <hr>
+            </div>
+            <hr style="margin-top:0;">
+        <div class="panel-footer" style="padding-bottom:0;">
+            {{template "paginator/default.html" .}}
+        </div>
+            <div class="panel-body" style="padding-top:5px;">
             <table class="table">
                 <thead>
                 <tr>
@@ -67,9 +72,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="panel-footer">
-            {{template "paginator/default.html" .}}
-        </div>
+
     </div>
 </div>
 <script type="text/javascript">

@@ -6,6 +6,7 @@ dir_path=$(cd `dirname $0`; pwd)
 
 cd ${dir_path}/../
 
+docker stop mm-wiki
 docker rm mm-wiki
 docker rmi mm-wiki
 

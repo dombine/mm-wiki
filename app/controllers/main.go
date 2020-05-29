@@ -98,13 +98,13 @@ func (this *MainController) Default() {
 	}
 
 	// link
-	links, err := models.LinkModel.GetLinksOrderBySequence()
+	links, err := models.LinkModel.GetLinksOrderBySequence(this.UserId)
 	if err != nil {
 		this.ErrorLog("查找快捷链接失败：" + err.Error())
 		this.ViewError("查找快捷链接失败！")
 	}
 	// contacts
-	contacts, err := models.ContactModel.GetAllContact()
+	contacts, err := models.ContactModel.GetAllContact(this.UserId)
 	if err != nil {
 		this.ErrorLog("查找快捷链接失败：" + err.Error())
 		this.ViewError("查找快捷链接失败！")

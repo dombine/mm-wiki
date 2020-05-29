@@ -22,7 +22,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="w5p">ID</th>
+                    <th class="w5p global-primary-id">ID</th>
                     <th>名称</th>
                     <th class="w18p">smtp服务器主机</th>
                     <th class="w18p">发件人邮箱</th>
@@ -34,7 +34,7 @@
                 <tbody>
                 {{range $email := .emails}}
                 <tr>
-                    <td class="center">{{$email.email_id}}</td>
+                    <td class="center global-primary-id">{{$email.email_id}}</td>
                     <td>{{$email.name}}</td>
                     <td>{{$email.host}}</td>
                     <td>{{$email.sender_address}}</td>

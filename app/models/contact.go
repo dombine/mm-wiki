@@ -127,10 +127,12 @@ func (c *Contact) DeleteByContactId(contactId string) (affect int64, err error) 
 }
 
 // 获取所有联系人信息
-func (c *Contact) GetAllContact() (contacts []map[string]string, err error) {
+func (c *Contact) GetAllContact(userId string) (contacts []map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
-	rs, err = db.Query(db.AR().From(Table_Contact_Name))
+	rs, err = db.Query(db.AR().From(Table_Contact_Name).Where(map[string]interface{}{
+		"user_id": userId,
+	}))
 	if err != nil {
 		return
 	}

@@ -45,11 +45,12 @@ func (l *Link) HasSameName(linkId, name string) (has bool, err error) {
 }
 
 // name is exists
-func (l *Link) HasLinkName(name string) (has bool, err error) {
+func (l *Link) HasLinkName(userId string, name string) (has bool, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
 	rs, err = db.Query(db.AR().From(Table_Link_Name).Where(map[string]interface{}{
-		"name": name,
+		"name":    name,
+		"user_id": userId,
 	}).Limit(0, 1))
 	if err != nil {
 		return
@@ -61,11 +62,12 @@ func (l *Link) HasLinkName(name string) (has bool, err error) {
 }
 
 // get link by name
-func (l *Link) GetLinkByName(name string) (link map[string]string, err error) {
+func (l *Link) GetLinkByName(userId string, name string) (link map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
 	rs, err = db.Query(db.AR().From(Table_Link_Name).Where(map[string]interface{}{
-		"name": name,
+		"name":    name,
+		"user_id": userId,
 	}).Limit(0, 1))
 	if err != nil {
 		return
@@ -117,12 +119,13 @@ func (l *Link) Update(linkId string, linkValue map[string]interface{}) (id int64
 }
 
 // get limit links by search keyword
-func (l *Link) GetLinksByKeywordAndLimit(keyword string, limit int, number int) (links []map[string]string, err error) {
+func (l *Link) GetLinksByKeywordAndLimit(keyword string, userId string, limit int, number int) (links []map[string]string, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
 	rs, err = db.Query(db.AR().From(Table_Link_Name).Where(map[string]interface{}{
 		"name LIKE": "%" + keyword + "%",
+		"userId":    userId,
 	}).Limit(limit, number).OrderBy("link_id", "DESC"))
 	if err != nil {
 		return
@@ -133,13 +136,16 @@ func (l *Link) GetLinksByKeywordAndLimit(keyword string, limit int, number int) 
 }
 
 // get limit links
-func (l *Link) GetLinksByLimit(limit int, number int) (links []map[string]string, err error) {
+func (l *Link) GetLinksByLimit(userId string, limit int, number int) (links []map[string]string, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
 	rs, err = db.Query(
 		db.AR().
 			From(Table_Link_Name).
+			Where(map[string]interface{}{
+				"user_id": userId,
+			}).
 			Limit(limit, number).
 			OrderBy("link_id", "DESC"))
 	if err != nil {
@@ -165,12 +171,14 @@ func (l *Link) GetLinks() (links []map[string]string, err error) {
 }
 
 // get all links by sequence
-func (l *Link) GetLinksOrderBySequence() (links []map[string]string, err error) {
+func (l *Link) GetLinksOrderBySequence(userId string) (links []map[string]string, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
 	rs, err = db.Query(
-		db.AR().From(Table_Link_Name).OrderBy("sequence", "ASC"))
+		db.AR().From(Table_Link_Name).Where(map[string]interface{}{
+			"user_id": userId,
+		}).OrderBy("sequence", "ASC"))
 	if err != nil {
 		return
 	}
@@ -179,14 +187,16 @@ func (l *Link) GetLinksOrderBySequence() (links []map[string]string, err error) 
 }
 
 // get link count
-func (l *Link) CountLinks() (count int64, err error) {
+func (l *Link) CountLinks(userId string) (count int64, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
-	rs, err = db.Query(
-		db.AR().
-			Select("count(*) as total").
-			From(Table_Link_Name))
+	rs, err = db.Query(db.AR().
+		Select("count(*) as total").
+		From(Table_Link_Name).
+		Where(map[string]interface{}{
+			"user_id": userId,
+		}))
 	if err != nil {
 		return
 	}
@@ -195,7 +205,7 @@ func (l *Link) CountLinks() (count int64, err error) {
 }
 
 // get link count by keyword
-func (l *Link) CountLinksByKeyword(keyword string) (count int64, err error) {
+func (l *Link) CountLinksByKeyword(keyword string, userId string) (count int64, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -204,6 +214,7 @@ func (l *Link) CountLinksByKeyword(keyword string) (count int64, err error) {
 		From(Table_Link_Name).
 		Where(map[string]interface{}{
 			"name LIKE": "%" + keyword + "%",
+			"user_id":   userId,
 		}))
 	if err != nil {
 		return
