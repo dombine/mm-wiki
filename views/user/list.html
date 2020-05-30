@@ -42,7 +42,7 @@
                 <tbody>
                 {{range $user := .users}}
                     <tr class="space-list">
-                        <td>
+                        {{/*<td>
                             {{if eq $user.user_id $loginUserId}}
                                 <strong><a href="/system/main/index" target="_parent">{{$user.username}} <span
                                                 class="text text-primary"><i class="glyphicon glyphicon-new-window"></i></span>
@@ -52,7 +52,8 @@
                                                 class="text text-primary"><i class="glyphicon glyphicon-new-window"></i></span>
                                     </a></strong>
                             {{end}}
-                        </td>
+                        </td>*/}}
+                        <td>{{$user.username}}</td>
                         <td>{{$user.given_name}}</td>
                         <td>{{$user.position}}</td>
                         <td>{{$user.email}}</td>
