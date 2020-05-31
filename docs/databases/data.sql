@@ -116,6 +116,12 @@ INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, actio
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (91, 'ajax获取服务器时间', 84, 'controller', 'static', 'serverTime', 'glyphicon-list', '', 0, 97, unix_timestamp(now()), unix_timestamp(now()));
 INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (92, '测试邮件服务器', 53, 'controller', 'email', 'test', 'glyphicon-list', '', 0, 80, unix_timestamp(now()), unix_timestamp(now()));
 
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (93, '账户管理', 71, 'controller', 'account', 'list', 'glyphicon-list', '', 1, 101, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (94, '添加账户', 71, 'controller', 'account', 'add', 'glyphicon-list', '', 0, 102, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (95, '添加账户保存', 71, 'controller', 'account', 'save', 'glyphicon-list', '', 0, 103, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (96, '修改账户', 71, 'controller', 'account', 'edit', 'glyphicon-list', '', 0, 104, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (97, '修改账户保存', 71, 'controller', 'account', 'modify', 'glyphicon-list', '', 0, 105, unix_timestamp(now()), unix_timestamp(now()));
+INSERT INTO mm_wiki_test.mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (98, '删除账户', 71, 'controller', 'account', 'delete', 'glyphicon-list', '', 0, 106, unix_timestamp(now()), unix_timestamp(now()));
 
 
 -- ---------------------------------------------

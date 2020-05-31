@@ -43,6 +43,7 @@ func initRouter() {
 		beego.NSAutoRouter(&systemControllers.LogController{}),
 		beego.NSAutoRouter(&systemControllers.EmailController{}),
 		beego.NSAutoRouter(&systemControllers.LinkController{}),
+		beego.NSAutoRouter(&systemControllers.AccountController{}),
 		beego.NSAutoRouter(&systemControllers.AuthController{}),
 		beego.NSAutoRouter(&systemControllers.ConfigController{}),
 		beego.NSAutoRouter(&systemControllers.ContactController{}),

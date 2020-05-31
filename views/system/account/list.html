@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="panel panel-default no-border sys-panel">
+        <div class="panel-body">
+            <div class="row top-row">
+                <form action="" method="get">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="账户名称">
+                            <span class="input-group-btn">
+				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+				            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input class="form-control" name="keyuname" type="text" value="{{.keyuname}}" placeholder="用户名">
+                            <span class="input-group-btn">
+				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+				            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input class="form-control" name="keyurl" type="text" value="{{.keyurl}}" placeholder="网址">
+                            <span class="input-group-btn">
+				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+				            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" name="add" data-link="/system/account/add" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加账户</button>
+                    </div>
+                    <div class="col-md-4 top-page">
+                        {{template "paginator/default.html" .}}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="w8p global-primary-id">ID</th>
+                    <th class="w15p">名称</th>
+                    <th class="w15p">用户名</th>
+                    <th class="w15p">密码</th>
+                    <th>网址</th>
+                    <th class="w15p">备注</th>
+                    <th class="w10p">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range $account := .accounts}}
+                <tr>
+                    <td class="center global-primary-id">{{$account.account_id}}</td>
+                    <td>{{$account.name}}</td>
+                    <td class="center">{{$account.username}}</td>
+                    <td class="center">{{$account.password}}</td>
+                    <td><a href="{{$account.url}}" target="_blank">{{$account.url}}</a></td>
+                    <td class="center">{{$account.comment}}</td>
+                    <td class="center">
+                        <a name="edit" data-link="/system/account/edit?account_id={{$account.account_id}}"><i class="glyphicon glyphicon-edit"></i>修改</a>
+                        <a onclick="Layers.confirm('确定删除吗？', '/system/account/delete?account_id={{$account.account_id}}');"><i class="glyphicon glyphicon-trash"></i>删除</a>
+                    </td>
+                </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    Layers.bindIframe("button[name='add']", "添加账户", "400px", "900px");
+    Layers.bindIframe("[name='edit']", "修改账户", "400px", "900px");
+</script>
