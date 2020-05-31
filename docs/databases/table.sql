@@ -244,13 +244,13 @@ CREATE TABLE `mw_link` (
 -- --------------------------------
 -- 账户管理表
 -- --------------------------------
-CREATE TABLE mm_wiki_test.`mw_account` (
-  `account_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '账户id',
+CREATE TABLE `mw_account` (
+  `account_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '账户 id',
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '账户名称',
-  `url` varchar(100) NOT NULL DEFAULT '' COMMENT '账户网址',
   `username` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名',
   `password` varchar(50) NOT NULL DEFAULT '' COMMENT '密码',
-  `comment` int(10) NOT NULL DEFAULT '' COMMENT '备注',
+  `url` varchar(100) COMMENT '账户网址',
+  `comment` varchar(150) COMMENT '备注',
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
