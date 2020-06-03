@@ -27,7 +27,7 @@ body {
 }
 /* main-left pane */
 .ui-layout-pane-west {
-    padding: 8px 10px;
+    padding: 5px 10px;
     background-color: #F8F8F8 !important;
     overflow: auto;
 }
