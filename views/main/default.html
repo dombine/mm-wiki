@@ -51,13 +51,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="panel panel-default" style="min-height: 792px">
                 <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> 快捷链接</strong></div>
                 <div class="panel-body">
                     <div class="row">
                         {{range $link := .links}}
-                        <div class="col-md-3 fast-link">
+                        <div class="col-md-12 fast-link">
                             <label> <a href="{{$link.url}}" target="_blank"><i class="fa fa-angle-double-right fa-lg"></i> {{$link.name}} <i class="fa fa-external-link"></i></a></label>
                         </div>
                         {{end}}
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3" >
+        <div class="col-md-4" >
             <div class="panel panel-default" style="min-height: 792px">
                 <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> 联系人</strong></div>
                 <div class="panel-body">
