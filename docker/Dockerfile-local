@@ -1,7 +1,8 @@
 FROM alpine/git
 ENV TZ=Asia/Shanghai
 WORKDIR /app
-RUN git clone https://github.com/dombine/mm-wiki.git
+#RUN git clone https://github.com/dombine/mm-wiki.git
+ADD mm-wiki.tar.gz ./
 
 FROM golang:1.14.1-alpine
 COPY --from=0 /app/mm-wiki /app/mm-wiki

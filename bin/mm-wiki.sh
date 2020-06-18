@@ -9,18 +9,19 @@ while [[ -h "${SOURCE}"  ]]; do # resolve $SOURCE until the file is no longer a 
 done
 DIR="$( cd -P "$( dirname "${SOURCE}" )" && pwd  )"
 
-pidfile=$DIR/../logs/mm-wiki.pid
+pidfile=${DIR}/../logs/mm-wiki.pid
 
-cd $DIR/../
+cd ${DIR}/../
 
 mm-start() {
     nohup ./mm-wiki --conf conf/mm-wiki.conf > /dev/null 2>&1 &
-    echo $! > $pidfile
+    echo $! > ${pidfile}
+    cat ${pidfile}
 }
 
 mm-stop() {
-    cat $pidfile | xargs kill -9
-	rm -rf $pidfile
+    cat ${pidfile} | xargs kill -9
+	rm -rf ${pidfile}
 }
 
 if [[ -z "$1" ]];then
