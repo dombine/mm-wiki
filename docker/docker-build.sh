@@ -32,3 +32,5 @@ docker run -d -p 8091:8091 --net mynetwork --ip 172.18.0.12 -v ${mm_wiki_dir}/co
 
 #删除过程中的无用容器
 docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
+
+\rm -rf ${dist_path}

@@ -14,64 +14,64 @@
                     <div class="document-update">
                         <ul>
                             {{range $logDocument := $logDocuments}}
-                            <li>
-                                <div>
-                                    {{if eq $logDocument.action "3"}}
-                                        {{if eq $logDocument.document_type "1"}}
-                                            <i class="fa fa-file-word-o"></i>
+                                <li>
+                                    <div>
+                                        {{if eq $logDocument.action "3"}}
+                                            {{if eq $logDocument.document_type "1"}}
+                                                <i class="fa fa-file-word-o"></i>
+                                            {{else}}
+                                                <i class="fa fa-folder-o"></i>
+                                            {{end}}
+                                            {{$logDocument.document_name}}
                                         {{else}}
-                                            <i class="fa fa-folder-o"></i>
+                                            <a href="/document/index?document_id={{$logDocument.document_id}}" target="_parent" class="text text-info text-font-15">
+                                                {{if eq $logDocument.document_type "1"}}
+                                                    <i class="fa fa-file-word-o"></i>
+                                                {{else}}
+                                                    <i class="fa fa-folder-o"></i>
+                                                {{end}}
+                                                {{$logDocument.document_name}}</a>
                                         {{end}}
-                                        {{$logDocument.document_name}}
-                                    {{else}}
-                                    <a href="/document/index?document_id={{$logDocument.document_id}}" target="_parent" class="text text-info text-font-15">
-                                        {{if eq $logDocument.document_type "1"}}
-                                            <i class="fa fa-file-word-o"></i>
-                                        {{else}}
-                                            <i class="fa fa-folder-o"></i>
-                                        {{end}}
-                                         {{$logDocument.document_name}}</a>
-                                    {{end}}
-                                </div>
-                                <span class="text text-font-12 document-user-time"><i class="fa fa-calendar"></i> 被
+                                    </div>
+                                    <span class="text text-font-12 document-user-time"><i class="fa fa-calendar"></i> 被
                                 {{if eq $logDocument.user_id $.login_user_id}}
                                     <a href="/system/main/index" target="_parent">{{$logDocument.username}}（{{$logDocument.given_name}}）<span class="text text-primary"></span> </a>
                                 {{else}}
                                     <a href="/user/info?user_id={{$logDocument.user_id}}">{{$logDocument.username}}（{{$logDocument.given_name}}）<span class="text text-primary"></span> </a>
                                 {{end}}
-                                {{if eq $logDocument.action "1"}}创建{{else if eq $logDocument.action "2"}}修改{{else if eq $logDocument.action "3"}}删除{{end}}于 {{dateFormat $logDocument.create_time "Y-m-d H:i:s"}}</span>
-                            </li>
-                            <hr>
+                                        {{if eq $logDocument.action "1"}}创建{{else if eq $logDocument.action "2"}}修改{{else if eq $logDocument.action "3"}}删除{{end}}于 {{dateFormat $logDocument.create_time "Y-m-d H:i:s"}}</span>
+                                </li>
+                                <hr>
                             {{end}}
                         </ul>
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                {{template "paginator/default.html" .}}
+                    {{template "paginator/default.html" .}}
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="panel panel-default" style="min-height: 792px">
+        <div class="col-md-6">
+            <div class="panel panel-default" style="min-height: 500px">
                 <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> 快捷链接</strong></div>
                 <div class="panel-body">
                     <div class="row">
                         {{range $link := .links}}
-                        <div class="col-md-12 fast-link">
-                            <label> <a href="{{$link.url}}" target="_blank"><i class="fa fa-angle-double-right fa-lg"></i> {{$link.name}} <i class="fa fa-external-link"></i></a></label>
-                        </div>
+                            <div class="col-md-3 fast-link">
+                                <label> <a href="{{$link.url}}" target="_blank"><i class="fa fa-angle-double-right fa-lg"></i> {{$link.name}} <i class="fa fa-external-link"></i></a></label>
+                            </div>
                         {{end}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4" >
-            <div class="panel panel-default" style="min-height: 792px">
+        <div class="col-md-6" >
+            <div class="panel panel-default" style="min-height: 282px">
                 <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> 联系人</strong></div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {{range $contact := .contacts}}
-                        <li class="list-group-item">{{$contact.position}}({{$contact.name}})：<i class="glyphicon glyphicon-phone"></i>{{$contact.mobile}} <i class="glyphicon glyphicon-envelope"></i> {{$contact.email}}</li>
+                            <li class="list-group-item">{{$contact.position}}({{$contact.name}})：<i class="glyphicon glyphicon-phone"></i>{{$contact.mobile}} <i class="glyphicon glyphicon-envelope"></i> {{$contact.email}}</li>
                         {{end}}
                     </ul>
                 </div>
