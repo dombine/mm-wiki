@@ -26,6 +26,7 @@ func (this *LinkController) Save() {
 	name := strings.TrimSpace(this.GetString("name", ""))
 	url := strings.TrimSpace(this.GetString("url", ""))
 	sequence := strings.TrimSpace(this.GetString("sequence", "0"))
+	groupName := strings.TrimSpace(strings.ToUpper(this.GetString("groupName", "DEFAULT")))
 	if name == "" {
 		this.jsonError("链接名称不能为空！")
 	}
@@ -49,6 +50,7 @@ func (this *LinkController) Save() {
 		"url":      url,
 		"sequence": sequence,
 		"user_id":  this.UserId,
+		"group_name": groupName,
 	})
 
 	if err != nil {
@@ -112,6 +114,7 @@ func (this *LinkController) Modify() {
 	name := strings.TrimSpace(this.GetString("name", ""))
 	url := strings.TrimSpace(this.GetString("url", ""))
 	sequence := strings.TrimSpace(this.GetString("sequence", ""))
+	groupName := strings.TrimSpace(strings.ToUpper(this.GetString("groupName", "DEFAULT")))
 
 	if linkId == "" {
 		this.jsonError("链接不存在！")
@@ -143,6 +146,7 @@ func (this *LinkController) Modify() {
 		"name":     name,
 		"url":      url,
 		"sequence": sequence,
+		"group_name": groupName,
 	})
 
 	if err != nil {

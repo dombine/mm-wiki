@@ -9,12 +9,17 @@ while [[ -h "${SOURCE}"  ]]; do # resolve $SOURCE until the file is no longer a 
 done
 DIR="$( cd -P "$( dirname "${SOURCE}" )" && pwd  )"
 
-pidfile=${DIR}/../logs/mm-wiki.pid
+workdir=/Users/ice/Workdir/mm-wiki
+pidfile=${workdir}/mm-wiki.pid
 
 cd ${DIR}/../
 
+mm-start2() {
+  ./mm-wiki --conf ${workdir}/mm-wiki.conf
+}
+
 mm-start() {
-    nohup ./mm-wiki --conf conf/mm-wiki.conf > /dev/null 2>&1 &
+    nohup ./mm-wiki --conf ${workdir}/mm-wiki.conf > /dev/null 2>&1 &
     echo $! > ${pidfile}
     cat ${pidfile}
 }
@@ -30,6 +35,9 @@ if [[ -z "$1" ]];then
 fi
 
 case $1 in
+    'start2')
+        mm-start2
+        ;;
     'start')
         mm-start
         ;;

@@ -98,7 +98,7 @@ func (this *MainController) Default() {
 	}
 
 	// link
-	links, err := models.LinkModel.GetLinksOrderBySequence(this.UserId)
+	groups, err := models.LinkModel.GetLinksOrderBySequence(this.UserId)
 	if err != nil {
 		this.ErrorLog("查找快捷链接失败：" + err.Error())
 		this.ViewError("查找快捷链接失败！")
@@ -133,7 +133,7 @@ func (this *MainController) Default() {
 	this.Data["panel_title"] = mainTitle
 	this.Data["panel_description"] = mainDescription
 	this.Data["logDocuments"] = logDocuments
-	this.Data["links"] = links
+	this.Data["groups"] = groups
 	this.Data["contacts"] = contacts
 	this.SetPaginator(number, count)
 	this.viewLayout("main/default", "default")

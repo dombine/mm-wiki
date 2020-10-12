@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 挂载路径
-mm_wiki_dir=/home/ice/Storage/mm-wiki
+mm_wiki_dir=/root/storage/mm-wiki
 # 脚本路径
 dir_path=$(cd `dirname $0`; pwd)
 # 项目路径
@@ -28,7 +28,7 @@ docker rm mm-wiki
 docker rmi mm-wiki
 
 docker build -t mm-wiki . -f Dockerfile-local
-docker run -d -p 8091:8091 --net mynetwork --ip 172.18.0.12 -v ${mm_wiki_dir}/conf/:/opt/mm-wiki/conf/ -v ${mm_wiki_dir}/data/:/data/mm-wiki/data/ --name mm-wiki --restart=always mm-wiki
+docker run -d -p 8091:8091 --net mynetwork --ip 172.19.0.12 -v ${mm_wiki_dir}/conf/:/opt/mm-wiki/conf/ -v ${mm_wiki_dir}/data/:/data/mm-wiki/data/ --name mm-wiki --restart=always mm-wiki
 
 #删除过程中的无用容器
 docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi

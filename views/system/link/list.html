@@ -28,6 +28,7 @@
                     <th class="w8p global-primary-id">ID</th>
                     <th class="w25p">名称</th>
                     <th>url</th>
+                    <th class="w10p">所属组</th>
                     <th class="w10p">排序号</th>
                     <th class="w13p">操作</th>
                 </tr>
@@ -38,6 +39,7 @@
                     <td class="center global-primary-id">{{$link.link_id}}</td>
                     <td>{{$link.name}}</td>
                     <td><a href="{{$link.url}}" target="_blank">{{$link.url}}</a></td>
+                    <td class="center">{{$link.group_name}}</td>
                     <td class="center">{{$link.sequence}}</td>
                     <td class="center">
                         <a name="edit" data-link="/system/link/edit?link_id={{$link.link_id}}"><i class="glyphicon glyphicon-edit"></i>修改</a>

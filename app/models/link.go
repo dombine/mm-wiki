@@ -4,6 +4,7 @@ import (
 	"github.com/dombine/mm-wiki/app/utils"
 	"github.com/snail007/go-activerecord/mysql"
 	"time"
+	"sort"
 )
 
 const Table_Link_Name = "link"
@@ -171,7 +172,7 @@ func (l *Link) GetLinks() (links []map[string]string, err error) {
 }
 
 // get all links by sequence
-func (l *Link) GetLinksOrderBySequence(userId string) (links []map[string]string, err error) {
+func (l *Link) GetLinksOrderBySequence(userId string) (groups []map[string]interface{}, err error) {
 
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -182,7 +183,33 @@ func (l *Link) GetLinksOrderBySequence(userId string) (links []map[string]string
 	if err != nil {
 		return
 	}
-	links = rs.Rows()
+
+	//var links = []map[string]string
+	var links = rs.Rows()
+
+    // 封装为string，link格式
+	var mapLink = make(map[string][]map[string]string)
+	for i := 0; i < len(links); i++ {
+        var link = links[i]
+        var groupName = link ["group_name"]
+        mapLink [groupName] = append(mapLink[groupName], link)
+    }
+
+    var keys []string
+    for k := range mapLink {
+        keys = append(keys, k)
+    }
+
+    sort.Strings(keys)
+    
+    // 循环map，封装为数组
+    for _, k := range keys {
+        var groupLink = make(map[string]interface{})
+        groupLink ["groupName"] = k
+        groupLink ["links"] = mapLink[k]
+        groups = append(groups, groupLink)
+    }
+
 	return
 }
 

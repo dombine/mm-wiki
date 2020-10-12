@@ -88,21 +88,21 @@ var Page = {
                         isFollowDoc = "1";
                     }
                 }
-                if (commentText && commentText.length > 0) {
-                    if (commentText.length > 50) {
-                        layer.tips("最多50个字符！", $("textarea[name='edit_comment']"))
-                    } else {
-                        layer.close(index);
-                        var options = {
-                            dataType: 'json',
-                            success: response,
-                            data: {'comment': commentText, 'is_notice_user': isNoticeUser, 'is_follow_doc': isFollowDoc}
-                        };
-                        $(element).ajaxSubmit(options);
-                    }
+                // 默认备注，不用每次都输入
+                commentText = commentText || "修改了文档";
+
+                if (commentText.length > 50) {
+                    layer.tips("最多50个字符！", $("textarea[name='edit_comment']"))
                 } else {
-                    $("textarea[name='edit_comment']").focus();
+                    layer.close(index);
+                    var options = {
+                        dataType: 'json',
+                        success: response,
+                        data: {'comment': commentText, 'is_notice_user': isNoticeUser, 'is_follow_doc': isFollowDoc}
+                    };
+                    $(element).ajaxSubmit(options);
                 }
+
             },
             btn2: function (index, layero) {
                 layer.close(index);

@@ -25,13 +25,13 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="username"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input value="admin" type="text" name="username" class="form-control" placeholder="请输入系统用户名" autocomplete="new-username" onkeydown="KeyDown('#default_login')">
+                                    <input type="text" name="username" class="form-control" placeholder="请输入系统用户名" autocomplete="new-username" onkeydown="KeyDown('#default_login')">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="password"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input value="123456" type="password" name="password" class="form-control" placeholder="请输入密码" autocomplete="new-password" onkeydown="KeyDown('#default_login')">
+                                    <input type="password" name="password" class="form-control" placeholder="请输入密码" autocomplete="new-password" onkeydown="KeyDown('#default_login')">
                                 </div>
                             </div>
                             <input id="default_login" name="submit" type="button" value="登录" class="btn btn-primary btn-block" onclick="Login.ajaxSubmit(this.form)">

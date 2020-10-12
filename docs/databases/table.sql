@@ -234,6 +234,7 @@ CREATE TABLE `mw_link` (
   `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接 id',
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '链接名称',
   `url` varchar(100) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `group_name` varchar(32) NOT NULL DEFAULT 'DEFAULT' COMMENT '组名',
   `sequence` int(10) NOT NULL DEFAULT '0' COMMENT '排序号(越小越靠前)',
   `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',

@@ -7,7 +7,7 @@
                 <h4><span class="label label-default">{{$.role.name}}权限</span> </h4>
                 <hr>
                 {{range $menu := $.menus}}
-                    <ul class="list-group">
+                    <ul class="list-group w240 inline-group">
                         <li class="list-group-item"><strong>{{$menu.name}}</strong> <span class="pull-right"><input name="privilege_id" type="checkbox" data-type="menu" value="{{$menu.privilege_id}}" onclick="Role.privilege(this)" /></span></li>
                         {{range $controller := $.controllers}}
                             {{if eq $controller.parent_id $menu.privilege_id}}
