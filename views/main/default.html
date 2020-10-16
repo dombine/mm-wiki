@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 10px">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <div class="alert alert-info alert-dismissible fade in" role="alert" style="padding:10px 10px 10px 9px; margin-bottom: 10px">
+                <button type="button" class="close" style="top:-4px;right:0;" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h5 style="margin-bottom:0;margin-top:0;"><i class="glyphicon glyphicon-volume-up"></i> {{.panel_title}} </h5>
                 <!--<p>{{.panel_description}}</p>-->
             </div>
@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><i class="fa fa-file-word-o"></i>  最近更新文档</strong></div>
-                <div class="panel-body" style="min-height: 713px">
+                <div class="panel-body" style="min-height: 723px">
                     <div class="document-update">
                         <ul>
                             {{range $logDocument := $logDocuments}}
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default" style="min-height: 790px">
+            <div class="panel panel-default" style="min-height: 800px">
                 <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> 快捷链接</strong></div>
                 <div class="panel-body">
                     {{range $group := .groups}}
